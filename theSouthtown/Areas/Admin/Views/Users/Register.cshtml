@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+@using (Html.BeginForm()) {
+  @Html.AntiForgeryToken()
+
+<div class="span-24 last"><div class="module">
+  <div class="moduleHeader">
+    <h3>
+      Register New User
+    </h3>
+    <div class="moduleAdd">
+		</div>
+  </div>
+  <div class="moduleContent">
+      <fieldset> 
+      @Html.ValidationSummary()
+  		<p><label for="email">Email:</label><br /> 
+        @Html.TextBox("email", "", new { @class = "text" })
+        @Html.ValidationMessage("Email")</p> 
+  		<p><label for="name">Name:</label><br /> 
+        @Html.TextBox("name", "", new { @class = "text" })
+        @Html.ValidationMessage("Name")</p> 
+
+  		<p><label for="comment">Comment:</label><br /> 
+        @Html.TextArea("comment", "", new { @class = "text" })
+        @Html.ValidationMessage("Comment")</p> 
+  		<p>@Html.CheckBox("enabled")  <label for="enabled">Enabled:</label></p>		
+      </fieldset>
+  </div>
+</div></div>
+  <div class="span-24 last"><div class="actions"> 
+    <input type="submit" class="bigButton bigSave" value="Save" />
+		<div class="clear"></div>
+  </div></div>
+}

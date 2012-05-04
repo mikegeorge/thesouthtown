@@ -1,0 +1,44 @@
+@model theSouthtown.Models.Article
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Article</legend>
+
+    <div class="display-label">Slug</div>
+    <div class="display-field">@Model.Slug</div>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">@Model.Title</div>
+
+    <div class="display-label">Body</div>
+    <div class="display-field">@Model.Body</div>
+
+    <div class="display-label">Author</div>
+    <div class="display-field">@(Model.Author == null ? "None" : Model.Author.Name)</div>
+
+    <div class="display-label">Published</div>
+    <div class="display-field">@Model.Published</div>
+
+    <div class="display-label">MediaId</div>
+    <div class="display-field">@Model.MediaId</div>
+
+    <div class="display-label">PostedDate</div>
+    <div class="display-field">@String.Format("{0:g}", Model.PostedDate)</div>
+
+    <div class="display-label">CreatedDate</div>
+    <div class="display-field">@String.Format("{0:g}", Model.CreatedDate)</div>
+
+    <div class="display-label">ModifiedDate</div>
+    <div class="display-field">@String.Format("{0:g}", Model.ModifiedDate)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

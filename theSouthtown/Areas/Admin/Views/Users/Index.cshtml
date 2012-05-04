@@ -1,0 +1,55 @@
+﻿@model IEnumerable<theSouthtown.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+      <div class="span-24 last"><div class="module">
+        <div class="moduleHeader">
+          <h3>
+           List
+          </h3>
+          <div class="moduleAdd">
+          @Html.ActionLink("Register New", "Register", new { area = "Admin"}, new { @class = "button add" })
+					</div>
+        </div>
+        <div class="moduleContent">
+
+          <table class="grid">
+            <thead>
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Email
+              </th>
+              <th>
+                Created
+              </th>
+              <th>
+                Last Login
+              </th>
+            </tr>
+            </thead>
+<tbody>
+            @foreach (var item in Model) {
+              <tr>
+                <td>
+                  @Html.ActionLink(item.Name, "Details", new { id=item.Id })
+                </td>
+                <td>
+                  @item.Email
+                </td>
+                <td>
+                  @String.Format("{0:g}", item.DateCreated)
+                </td>
+                <td>
+                  @String.Format("{0:g}", item.DateLastLogin)
+                </td>
+              </tr>
+            }
+            </tbody>
+          </table>
+
+        </div>
+      </div></div>

@@ -1,0 +1,51 @@
+﻿@model theSouthtown.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">@Model.Email</div>
+
+    <div class="display-label">PasswordHash</div>
+    <div class="display-field">@Model.PasswordHash</div>
+
+    <div class="display-label">PasswordSalt</div>
+    <div class="display-field">@Model.PasswordSalt</div>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">Comment</div>
+    <div class="display-field">@Model.Comment</div>
+
+    <div class="display-label">PasswordNeedsUpdating</div>
+    <div class="display-field">@Model.PasswordNeedsUpdating</div>
+
+    <div class="display-label">DateCreated</div>
+    <div class="display-field">@String.Format("{0:g}", Model.DateCreated)</div>
+
+    <div class="display-label">DateLastLogin</div>
+    <div class="display-field">@String.Format("{0:g}", Model.DateLastLogin)</div>
+
+    <div class="display-label">DateLastActivity</div>
+    <div class="display-field">@String.Format("{0:g}", Model.DateLastActivity)</div>
+
+    <div class="display-label">DateLastPasswordChange</div>
+    <div class="display-field">@String.Format("{0:g}", Model.DateLastPasswordChange)</div>
+
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

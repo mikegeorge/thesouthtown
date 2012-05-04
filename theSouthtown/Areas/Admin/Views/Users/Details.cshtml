@@ -1,0 +1,47 @@
+﻿@model theSouthtown.Models.User
+
+@{
+    ViewBag.Title = "Users";
+}
+<div class="span-12"><div class="module">
+  <div class="moduleHeader">
+    <h3>Details</h3>
+  </div>
+  <div class="moduleContent">
+  <table>
+    <tr>
+      <th>Name</th>
+      <td>@Model.Name</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>@Model.Email</td>
+    </tr>
+    <tr>
+      <th>Comment</th>
+      <td>@Model.Comment</td>
+    </tr>
+    <tr>
+      <th>DateCreated</th>
+      <td>@String.Format("{0:g}", Model.DateCreated)</td>
+    </tr>
+    <tr>
+      <th>DateLastLogin</th>
+      <td>@String.Format("{0:g}", Model.DateLastLogin)</td>
+    </tr>
+    <tr>
+      <th>DateLastActivity</th>
+      <td>@String.Format("{0:g}", Model.DateLastActivity)</td>
+    </tr>
+    <tr>
+      <th>DateLastPasswordChange</th>
+      <td>@String.Format("{0:g}", Model.DateLastPasswordChange)</td>
+    </tr>
+  </table>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+  </div>
+</div></div>

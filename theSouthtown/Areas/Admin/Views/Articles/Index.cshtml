@@ -1,0 +1,83 @@
+@model IEnumerable<theSouthtown.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Slug
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Body
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            Published
+        </th>
+        <th>
+            MediaId
+        </th>
+        <th>
+            PostedDate
+        </th>
+        <th>
+            CreatedDate
+        </th>
+        <th>
+            ModifiedDate
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        <td>
+			@item.Slug
+        </td>
+        <td>
+			@item.Title
+        </td>
+        <td>
+			@item.Body
+        </td>
+        <td>
+			@(item.Author == null ? "None" : item.Author.Name)
+        </td>
+        <td>
+			@item.Published
+        </td>
+        <td>
+			@item.MediaId
+        </td>
+        <td>
+			@String.Format("{0:g}", item.PostedDate)
+        </td>
+        <td>
+			@String.Format("{0:g}", item.CreatedDate)
+        </td>
+        <td>
+			@String.Format("{0:g}", item.ModifiedDate)
+        </td>
+    </tr>
+}
+
+</table>
+
+

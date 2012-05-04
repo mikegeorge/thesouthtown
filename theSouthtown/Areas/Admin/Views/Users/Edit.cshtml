@@ -1,0 +1,73 @@
+﻿@model theSouthtown.Models.User
+
+@{
+    ViewBag.Title = "Users";
+}
+<div class="span-12 last"><div class="module">
+  <div class="moduleHeader">
+    <h3>Edit</h3>
+  </div>
+  <div class="moduleContent"> 
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>User</legend>
+
+        @Html.HiddenFor(model => model.Id)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Email, new {@class = "text" })
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <p><a href="#" id="resetPwd">Reset Password</a></p>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Name)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.Comment)
+</div>
+<div class="editor-field">
+    @Html.TextAreaFor(model => model.Comment)
+    @Html.ValidationMessageFor(model => model.Comment)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.PasswordNeedsUpdating)
+</div>
+<div class="editor-field">
+    @Html.DisplayFor(model => model.PasswordNeedsUpdating)
+</div>
+
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+  <p>@Html.ActionLink("Back to List", "Index")</p>
+  <p>@Html.ActionLink("Delete", "Delete", new { id = Model.Id })</p>            
+</div>
+  </div>
+</div></div>
+
+@section js {
+<script type="text/javascript">
+  $(function () {
+    $('#resetPwd').click(function () {
+      $.post('@(Url.Content("~/Admin/Users/ResetPassword?email="))@Model.Email', function (data) {
+        alert(data);
+      });
+    });
+
+  });
+</script>
+}

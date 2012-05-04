@@ -1,0 +1,26 @@
+﻿@{ ViewBag.Title = "Login"; }
+<div class="span-24 last"><div class="module">
+  <div class="moduleHeader">
+    <h3>Login</h3> 
+  </div>
+    <div class="moduleContent"> 
+    @using (Html.BeginForm()) {
+      <fieldset> 
+      @Html.AntiForgeryToken()
+      @Html.Hidden("returnUrl", Request.QueryString["returnUrl"])
+  		<p><label for="email">Email:</label><br /> 
+  		@Html.TextBox("email", null, new { @class="title" })
+  		@Html.ValidationMessage("email")</p>
+  		<p><label for="password">Password:</label><br /> 
+  		@Html.Password("password", null, new { @class = "text" })
+  		@Html.ValidationMessage("password")</p>
+  		<p>@Html.CheckBox("rememberMe") <label class="inline" for="rememberMe">Remember me?</label></p>
+                <p>@Html.ActionLink("Forgot Password?", "ForgotPassword")</p>
+                    
+      </fieldset>
+      <div class="actions"> 
+        <input type="submit" value="Login" class="smallButton smallLogin" />
+      </div>
+    }
+    </div> 
+</div></div>
